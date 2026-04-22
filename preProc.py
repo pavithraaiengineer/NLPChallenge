@@ -1,22 +1,21 @@
 import re
+from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
+from nltk.stem import SnowballStemmer, WordNetLemmatizer
+
+
 
 def normalize_text(text):
     text = str(text)
+    # Remove numbers
+    text = re.sub(r'\d+', ' ', text)
     # Remove special characters
     text = re.sub(r"[^a-zA-Z]", " ", text)
-    # Remove single characters
-    text = re.sub(r"\b[a-zA-Z]\b", " ", text)
-    # Remove prefixed 'b'
-    text = re.sub(r"\bb\s+", " ", text)
+    # Replace non-alphanumeric chars (keep spaces)
+    text = re.sub(r'[^\w\s]', ' ', text)
     # Substitute multiple spaces with single space
     text = re.sub(r"\s+", " ", text)
-    # Convert to lowercase and strip
-    text = text.lower().strip()
-
     return text
 
-
-from sklearn.feature_extraction.text import ENGLISH_STOP_WORDS
 
 stop_words = set(ENGLISH_STOP_WORDS)
 
@@ -26,7 +25,6 @@ def remove_stopwords(text):
     return " ".join(filtered_words)
 
 
-from nltk.stem import SnowballStemmer, WordNetLemmatizer
 
 snowball = SnowballStemmer("english")
 WordNet = WordNetLemmatizer()
