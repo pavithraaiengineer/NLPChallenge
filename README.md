@@ -27,8 +27,8 @@ Final model metrics: Accuracy **98.79%** · Precision **0.99** · Recall **0.99*
 
 ```
 ├── preProc.py                  # Text cleaning, stopword removal, stemming, lemmatisation
-├── model1.ipynb                # Baseline classifiers (BoW, TF-IDF, 4 sklearn models)
-├── model2.ipynb                # + DistilBERT embeddings, precision/recall/ROC, plots
+├── Baseline.ipynb                # Baseline classifiers (BoW, TF-IDF, 4 sklearn models)
+├── Final_EMB+FT+ENS.ipynb                # + DistilBERT embeddings, precision/recall/ROC, plots
 ├── training_data_lowercase.csv # Tab-separated dataset (label, title)
 └── README.md
 ```
